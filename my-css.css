@@ -1,0 +1,28 @@
+.title-home {
+    text-align: center;
+    font-size: 60px;
+    color: green;
+}
+
+.my-border {
+    border-style: solid;
+    border-width: 2px;
+}
+
+.my-border-no-top {
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-width: 2px;
+}
+
+.my-font-fam {
+    font-family: cursive;
+}
+
+body{
+    background-image:url('img/bgimg1.jpg');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

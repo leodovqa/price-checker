@@ -1,12 +1,10 @@
 // On click get the button and set the new input text to the <a> field
 document.getElementById('saveBtnBefore').addEventListener('click', function () {
-    let input_before_val = document.getElementById('inputBefore').value;
-    let text_before_val = document.getElementById('textBefore').textContent = input_before_val;
+    document.getElementById('textBefore').textContent = document.getElementById('inputBefore').value;
 });
 // On click get the button and set the new input text to the <a> field
 document.getElementById('saveBtnAfter').addEventListener('click', function () {
-    let input_before_val = document.getElementById('inputAfter').value;
-    let text_before_val = document.getElementById('textAfter').textContent = input_before_val;
+    document.getElementById('textAfter').textContent = document.getElementById('inputAfter').value;
 });
 
 
@@ -47,4 +45,3 @@ function setInputFilter(textbox, inputFilter, errMsg) {
         });
     });
 }
-

@@ -9,6 +9,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- My CSS -->
     <link rel="stylesheet" href="my-css.css">
+    <link rel="shortcut icon" href="#">
     <title>Price Checker</title>
 </head>
 <body>
@@ -54,9 +55,9 @@
     </div>
 </div>
 
-
 <!-- (A) LIST USERS HERE -->
-<div class="container" style="text-align: center" id="demo"></div>
+<h1>Data from PostgreSQL</h1>
+<ul id="dataList"></ul>
 
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -71,21 +72,5 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="my-js.js"></script>
-    <script>
-        // Use Fetch API for AJAX request
-        fetch('db.php')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error.message);
-            });
-    </script>
 </body>
 </html>

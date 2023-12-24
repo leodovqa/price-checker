@@ -1,27 +1,21 @@
 <?php
-// Allow requests from any origin
-header("Access-Control-Allow-Origin: *");
-// Allow the following HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-// Allow the following HTTP headers
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json; charset=utf-8');
 
-$host = "surus.db.elephantsql.com";
-$port = "5432";
-$dbname = "ecflptzx";
-$user = "ecflptzx";
-$password = "2J7XG1Qc146lH4cpcjmzlscWlw7l0jHH";
+ $host = "surus.db.elephantsql.com";
+ $user = "ecflptzx";
+ $pass = "2J7XG1Qc146lH4cpcjmzlscWlw7l0jHH";
+ $db = "ecflptzx";
 
-// Establish a connection to the PostgreSQL database
-$db = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+// Open a PostgreSQL connection
+$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
-// Check the connection
-if (!$db) {
-    die("Connection failed: " . pg_last_error());
-} else {
-    echo "Connected successfully!";
+// Check if the connection is successful
+if (!$con) {
+    die('Connection failed');
 }
 
-// Close the connection when done
-pg_close($db);
-?>
+$query = 'SELECT * FROM users';
+$results = pg_query($con, $query) or die('Query failed: ' . pg_last_error());
+
+$row = pg_fetch_array($results);
+//print_r($row);

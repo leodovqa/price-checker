@@ -7,35 +7,6 @@ document.getElementById('saveBtnAfter').addEventListener('click', function () {
     document.getElementById('textAfter').textContent = document.getElementById('inputAfter').value;
 });
 
-
-fetch('query.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        //console.log(data);  // Log the retrieved data
-        if (Array.isArray(data)) {
-            // Process array data
-            const dataList = document.getElementById('dataList');
-            data.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.textContent = JSON.stringify(item);
-                //console.log('User Name: '+item['username']+' | User ID: '+item['user_id']);
-                dataList.append('User Name: '+item['username']+' | User ID: '+item['user_id']);
-                //console.log('test in data');
-            });
-        } else {
-            console.error('Data received is not an array:', data);
-        }
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
-
-
 // Install input filters.
 setInputFilter(document.getElementById("inputBefore"), function (value) {
     return /^-?\d*$/.test(value);

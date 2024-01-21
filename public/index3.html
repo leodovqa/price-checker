@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Data Retrieval</title>
+</head>
+<body>
+<h1>Firebase Data</h1>
+<ul id="dataList"></ul>
+
+<!-- Add Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Your Firebase Config -->
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCBqHJeK9xiGZEdq1g-hFaMqHUr91PfEVI",
+        authDomain: "dgun-fb.firebaseapp.com",
+        projectId: "dgun-fb",
+        storageBucket: "dgun-fb.appspot.com",
+        messagingSenderId: "768341492663",
+        appId: "1:768341492663:web:1db0235e4ca61acd105e32",
+        measurementId: "G-QMJD5X8FYJ"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    var db = firebase.firestore();
+</script>
+
+<!-- Your JavaScript code -->
+<script>
+    // Reference to the collection
+    var collectionRef = db.collection('price'); // Replace with your actual collection name
+
+    // Reference to the HTML list
+    var dataList = document.getElementById('dataList');
+
+    // Fetch data from Firestore and display it in HTML
+    collectionRef.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            var data = doc.data();
+            var listItem = document.createElement('li');
+            listItem.textContent = JSON.stringify(data);
+            dataList.appendChild(listItem);
+        });
+    }).catch((error) => {
+        console.error('Error getting documents: ', error);
+    });
+</script>
+</body>
+</html>
